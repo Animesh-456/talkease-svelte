@@ -24,4 +24,7 @@
     });
 </script>
 
-<video autoplay muted bind:this={videoElement} class="rounded-lg w-full ring-2 ring-green-400"></video>
+<video 
+    autoplay muted bind:this={videoElement} 
+    class="w-full ring-6 ring-green-400 rounded-3xl"
+></video>

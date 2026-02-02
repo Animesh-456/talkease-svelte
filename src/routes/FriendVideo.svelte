@@ -7,4 +7,7 @@
     }
 </script>
 
-<video autoplay bind:this={videoElement} class="rounded-lg w-full ring-2 ring-red-400"></video>
+<video 
+    autoplay bind:this={videoElement} 
+    class="w-full ring-6 ring-red-400 rounded-3xl"
+></video>
