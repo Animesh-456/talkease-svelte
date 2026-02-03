@@ -42,6 +42,10 @@
     function copyID() {
         navigator.clipboard.writeText(ME.id);
     }
+
+    function Cutcall() {
+        window.location.reload();
+    }
 </script>
 
 {#if !friendStream}
@@ -86,8 +90,8 @@
         <button class="bg-zinc-500 text-white px-8 py-4 rounded-full cursor-pointer" onclick={() => {}}>
             <CameraOff />
         </button>
-        <button class="bg-red-500 text-white px-8 py-4 rounded-full cursor-pointer" onclick={window.location.reload}>
-            <CutCall />
+        <button class="bg-red-500 text-white px-8 py-4 rounded-full cursor-pointer" onclick={Cutcall}>
+            <CutCall onclick={Cutcall}/>
         </button>
     </section>
 {/if}
