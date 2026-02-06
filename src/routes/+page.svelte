@@ -88,16 +88,27 @@
             </section>
         </div>
     </main>
+
+   
 {/if}
 
-{#if friendStream}
-    <main class="w-full h-full p-4 space-y-4">
-        <FriendVideo bind:friendStream />
-    </main>
-{/if}
 
-{#if friendStream}
-    <section id="controls" class="absolute bottom-0 w-full flex items-center justify-center gap-6 bg-black p-4">
+
+ <div class={friendStream ? "flex flex-col h-screen" : "hidden"}>
+    <!-- Video containers -->
+    <div class="flex-1 flex flex-col md:flex-row justify-center gap-5 md:gap-5 bg-black p-4">
+        <div class={friendStream ? "flex 1 w-full h-full" : "hidden"}>
+            <MyVideo bind:myStream />
+        </div>
+        <div class={friendStream ? "flex 1 w-full h-full" : "hidden"}>
+            <FriendVideo bind:friendStream />
+        </div>
+</div>
+
+
+    {#if friendStream}
+    <!-- Controls -->
+    <section id="controls" class="flex bottom-0 w-full flex items-center justify-center gap-6 bg-black p-4">
         <button class="{isMuted ? 'bg-red-500' : 'bg-zinc-500'} text-white px-8 py-4 rounded-full cursor-pointer" onclick={muteCall}>
             <Mute/>
         </button>
@@ -108,10 +119,5 @@
             <CutCall/>
         </button>
     </section>
-{/if}
-
-<section class={friendStream ? "block" : "hidden"}>
-    <div class="absolute z-10 bottom-[100px]! right-5! max-w-sm">
-        <MyVideo bind:myStream />
-    </div>
-</section>
+    {/if}
+</div>

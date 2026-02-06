@@ -26,5 +26,5 @@
 
 <video 
     autoplay muted bind:this={videoElement} 
-    class="w-full ring-6 ring-green-400 rounded-3xl"
+    class="w-full h-full object-cover ring-6 ring-green-400 rounded-3xl"
 ></video>
