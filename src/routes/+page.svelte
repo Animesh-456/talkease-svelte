@@ -24,6 +24,8 @@
 
     let myStream = null;
     let friendStream = null;
+    let isMuted = false;
+    let isCameraOff = false;
 
     function outgoingCall() {
         const call = ME.call(friendID, myStream);
@@ -45,6 +47,18 @@
 
     function Cutcall() {
         window.location.reload();
+    }
+
+    function muteCall() {
+        // toggle audio track enabled/disabled
+        myStream.getAudioTracks()[0].enabled = !myStream.getAudioTracks()[0].enabled;
+        isMuted = !isMuted;
+    }
+
+    function toggleCamera() {
+        // toggle video track enabled/disabled
+        myStream.getVideoTracks()[0].enabled = !myStream.getVideoTracks()[0].enabled;
+        isCameraOff = !isCameraOff;
     }
 </script>
 
@@ -84,14 +98,14 @@
 
 {#if friendStream}
     <section id="controls" class="absolute bottom-0 w-full flex items-center justify-center gap-6 bg-black p-4">
-        <button class="bg-zinc-500 text-white px-8 py-4 rounded-full cursor-pointer" onclick={() => {}}>
-            <Mute />
+        <button class="{isMuted ? 'bg-red-500' : 'bg-zinc-500'} text-white px-8 py-4 rounded-full cursor-pointer" onclick={muteCall}>
+            <Mute/>
         </button>
-        <button class="bg-zinc-500 text-white px-8 py-4 rounded-full cursor-pointer" onclick={() => {}}>
-            <CameraOff />
+        <button class="{isCameraOff ? 'bg-red-500' : 'bg-zinc-500'} text-white px-8 py-4 rounded-full cursor-pointer" onclick={toggleCamera}>
+            <CameraOff/>
         </button>
         <button class="bg-red-500 text-white px-8 py-4 rounded-full cursor-pointer" onclick={Cutcall}>
-            <CutCall onclick={Cutcall}/>
+            <CutCall/>
         </button>
     </section>
 {/if}
